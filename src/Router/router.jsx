@@ -6,6 +6,8 @@ import About from "../Page/About";
 import Message from "../Page/Message";
 import MainLayout from "../Layout/MainLayout";
 import ThumbleDetails from "../Page/ThumbleDetails";
+import Media from "../Page/Media";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -22,14 +24,14 @@ const router = createBrowserRouter([
             },                           
             {
                 path: "/photo/:id",
-                element: <ThumbleDetails />
+                element: <PrivateRoute> <ThumbleDetails /></PrivateRoute>
             },                           
             {
                 path: "/login",
                 element: <Login />
             },         
             {
-                path: "/sign-up",
+                path: "/signup",
                 element: <Signup />
             },         
             {
@@ -37,7 +39,11 @@ const router = createBrowserRouter([
                 element: <About />
             },         
             {
-                path: "/feedback",
+                path: "/media",
+                element: <PrivateRoute> <Media /></PrivateRoute>
+            },         
+            {
+                path: "/message",
                 element: <Message />
             },         
         ]

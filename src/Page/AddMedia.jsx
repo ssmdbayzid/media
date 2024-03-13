@@ -1,14 +1,21 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import { useForm } from 'react-hook-form'
 import ImageUpload from '../utility/ImageUpload'
+import { AuthContext } from '../context/AuthContext'
+import { useNavigate } from 'react-router-dom'
 const AddMedia = () => {
+  const {user} = useContext(AuthContext)
 const {register, reset, handleSubmit, formState: { errors },} = useForm()
 const [inputFiles, setInputFiles] = useState(null)
 const [inputFilesError, setInputFilesError] = useState("")
 
+const navigate = useNavigate()
 
 const submit = async d => {
-if (!inputFiles?.length) return   setInputFilesError("Photo is required")
+  if(!user) return navigate("/login")
+
+  console.log(d)
+if(!inputFiles?.length) return   setInputFilesError("Photo is required")
 
 const formData = new FormData()
 // Append each file individually
