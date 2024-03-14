@@ -1,4 +1,5 @@
-export const  images =[
+export const  images =
+[
    
     {
         "id": 1,
@@ -7,6 +8,7 @@ export const  images =[
         "thumble" : "https://cdn.pixabay.com/photo/2015/08/23/19/17/frogs-903221_640.jpg",
         "totalLike" : 6,
         "location": "City Park",
+        "comments" : [],
         "date": "2024-03-12",
         "equipment": ["Canon 5D Mark IV", "50mm f/1.8 lens"],
         "tags": ["portrait", "outdoor", "natural light"]
@@ -18,6 +20,7 @@ export const  images =[
         "thumble" : "https://cdn.pixabay.com/photo/2019/03/15/16/40/headphones-4057495_640.jpg",
         "totalLike" : 10,
         "location": "Mountain Range",
+        "comments" : [],
         "date": "2024-04-02",
         "equipment": ["Nikon D850", "24-70mm f/2.8 lens"],
         "tags": ["landscape", "nature", "scenic"]
@@ -29,6 +32,7 @@ export const  images =[
         "thumble" : "https://cdn.pixabay.com/photo/2018/02/17/00/15/cute-3158996_640.jpg",
         "totalLike" : 12,
         "location": "Grand Hotel",
+        "comments" : [],
         "date": "2024-05-18",
         "equipment": ["Sony A7III", "85mm f/1.4 lens", "external flash"],
         "tags": ["event", "party", "celebration"]
@@ -40,6 +44,7 @@ export const  images =[
         "thumble" : "https://cdn.pixabay.com/photo/2015/08/16/12/38/headphones-890881_640.jpg",
         "totalLike" : 14,
         "location": "Studio XYZ",
+        "comments" : [],
         "date": "2024-06-05",
         "equipment": ["Fuji X-T4", "macro lens", "softbox lighting"],
         "tags": ["product", "studio", "commercial"]
@@ -51,6 +56,7 @@ export const  images =[
         "thumble" : "https://cdn.pixabay.com/photo/2017/08/06/12/08/headphones-2591890_640.jpg",
         "totalLike" : 16,
         "location": "Various Countries",
+        "comments" : [],
         "date": "2024-07-20",
         "equipment": ["Pentax K-1", "35mm f/2.8 lens", "tripod"],
         "tags": ["travel", "documentary", "culture"]

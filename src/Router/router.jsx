@@ -40,7 +40,7 @@ const router = createBrowserRouter([
             },         
             {
                 path: "/media",
-                element: <PrivateRoute> <Media /></PrivateRoute>
+                element: <Media />
             },         
             {
                 path: "/message",

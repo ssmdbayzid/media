@@ -9,7 +9,7 @@ const Media = () => {
 
   return (
     <div className="">
-    <div className="relative h-[80vh] bg-[url('https://w0.peakpx.com/wallpaper/266/626/HD-wallpaper-crescent-moon-art-cloud-luna-luminos-rock-sky-sea-stones-fantasy-water-blue.jpg')] bg-center bg-no-repeat bg-cover">
+    <div className="relative h-[60vh] bg-[url('https://w0.peakpx.com/wallpaper/266/626/HD-wallpaper-crescent-moon-art-cloud-luna-luminos-rock-sky-sea-stones-fantasy-water-blue.jpg')] bg-center bg-no-repeat bg-cover">
    
     <form className="absolute top-1/2 left-1/2 -translate-x-1/2 md:w-2/5 mx-auto">
   <label
