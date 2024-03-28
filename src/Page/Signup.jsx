@@ -9,10 +9,28 @@ const Signup = () => {
 
   
   const onSubmit = async d => {
-    console.log(d)
-    const result = await signup(d.email, d.password)
-    console.log(result)
+    
+    try {
+      const response = await fetch("http://localhost:5000/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({name:d.name, email: d.email, password: d.password })
+      });
+  
+      if (!response.ok) {
+        throw new Error("Failed to register");
+      }
+  
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
   }
+
+
   return (
     <div className="relative min-h-screen flex items-center justify-center bg-[url('https://static.vecteezy.com/system/resources/thumbnails/004/243/021/small/abstract-template-background-white-and-bright-blue-squares-overlapping-with-halftone-and-texture-free-vector.jpg')] bg-no-repeat bg-cover bg-center ">
   <div className="md:w-[450px] w-full bg-white p-5 ">
@@ -20,6 +38,17 @@ const Signup = () => {
       Sign Up
     </h1>
     <form onSubmit={handleSubmit(onSubmit)}>
+      <div>
+        <label htmlFor="name" className="font-semibold ">
+          Name
+        </label>
+        <input
+          {...register("name", {required: true})}
+          type="text"
+          placeholder="name"
+          className="w-full py-1.5 px-2 bg-slate-300 mt-2"
+        />
+      </div>
       <div>
         <label htmlFor="email" className="font-semibold ">
           Email

@@ -16,9 +16,25 @@ const Login = () => {
 
   if(user) navigate(form)
   const onSubmit = async d => {
-    const result = await login(d.email, d.password)
-    // const {user} = result;
-    console.log("error", result)
+
+    try {
+      const response = await fetch("http://localhost:5000/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email: d.email, password: d.password })
+      });
+  
+      if (!response.ok) {
+        throw new Error("Failed to register");
+      }
+  
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
   }
 
   return (
