@@ -37,6 +37,14 @@ const Login = () => {
     }
   }
 
+  const redirectToGoogle = async () =>{
+    const googleLoginUrl = "http://localhost:5000/api/v1/login/google";
+    const newWindow = window.open(
+      googleLoginUrl,
+      "_target",
+      "width=500,height=600"
+    );
+  }
   return (
     <div className="relative flex min-h-screen items-center justify-center bg-[url('https://static.vecteezy.com/system/resources/thumbnails/004/243/021/small/abstract-template-background-white-and-bright-blue-squares-overlapping-with-halftone-and-texture-free-vector.jpg')] bg-no-repeat bg-cover bg-center ">
   <div className="md:w-[450px] w-full bg-white p-5 ">
@@ -76,7 +84,7 @@ const Login = () => {
       <span>or</span>
       <hr className='h-1 bg-slate-600 w-1/3' />
     </div>
-    <div onClick={()=>googleSignIn()} className="flex cursor-pointer items-center justify-center gap-3 text-xl mt-2 border border-slate-300 py-1.5">
+    <div onClick={redirectToGoogle} className="flex cursor-pointer items-center justify-center gap-3 text-xl mt-2 border border-slate-300 py-1.5">
       <FcGoogle className='text-2xl' /> <p>Google</p>
     </div>
   </div>

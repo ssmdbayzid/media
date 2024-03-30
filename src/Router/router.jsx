@@ -8,6 +8,8 @@ import MainLayout from "../Layout/MainLayout";
 import ThumbleDetails from "../Page/ThumbleDetails";
 import Media from "../Page/Media";
 import PrivateRoute from "./PrivateRoute";
+import LoginSuccess from "../Page/LoginSuccess";
+import LoginFailed from "../Page/LoginFailed";
 
 const router = createBrowserRouter([
     {
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
             {
                 path: "/login",
                 element: <Login />
+            },         
+            {
+                path: "/login/success",
+                element: <LoginSuccess />
+            },         
+            {
+                path: "/login/failed",
+                element: <LoginFailed />
             },         
             {
                 path: "/signup",
