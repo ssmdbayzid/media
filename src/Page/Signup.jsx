@@ -11,20 +11,16 @@ const Signup = () => {
   const onSubmit = async d => {
     
     try {
-      const response = await fetch("http://localhost:5000/register", {
+     fetch("http://localhost:5000/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({name:d.name, email: d.email, password: d.password })
-      });
-  
-      if (!response.ok) {
-        throw new Error("Failed to register");
-      }
-  
-      const data = await response.json();
-      console.log(data);
+      })
+      .then(res=>res.json())
+      .then(data=>console.log(data))
+     
     } catch (error) {
       console.error("Error:", error);
     }

@@ -1,49 +1,88 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from '../context/AuthContext';
 import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 const Login = () => {
-  const {login, user, googleSignIn } = useContext(AuthContext)
+  // const {login, user, googleSignIn } = useContext(AuthContext)
   const {register,  handleSubmit} = useForm()
 
-  const location = useLocation()
-  const navigate = useNavigate()
+  const [user, setUser] = useState([]);
+  // useEffect(() => {
+  //   fetch('https://jsonplaceholder.typicode.com/photos')
+  //     .then((res) =>res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       // setPhotos(data);
+  //     });
+  // }, []);
 
-  const form = location.state?.from?.pathname || "/"
 
-  if(user) navigate(form)
+
+  // const location = useLocation()
+  // const navigate = useNavigate()
+
+  // const form = location.state?.from?.pathname || "/"
+
+  // if(user) navigate(form)
   const onSubmit = async d => {
-
+    console.log(d)
     try {
-      const response = await fetch("http://localhost:5000/register", {
+      fetch("http://localhost:5000/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({ email: d.email, password: d.password })
-      });
-  
-      if (!response.ok) {
-        throw new Error("Failed to register");
-      }
-  
-      const data = await response.json();
-      console.log(data);
+      })
+      .then(res=>res.json())
+      .then(data=>console.log(data))     
     } catch (error) {
       console.error("Error:", error);
     }
   }
 
+  const fetchAuthUser = async () =>{
+    const  response = await axios
+    .get("http://localhost:5000/api/v1/auth/user", {withCredentials: true})
+    .catch(err=> {
+      console.log(err)
+      console.log("error", "not properly authenticate")
+    })
+ 
+    if(response && response.data){
+      console.log(response.data)
+    }
+    // fetch("http://localhost:5000/api/v1/auth/user")
+    // .then(res=>res.json())
+    // .then(data=>console.log(data))
+    // .catch(err=> console.log(err))
+  }
+
+
   const redirectToGoogle = async () =>{
+
+    let timer = null;
     const googleLoginUrl = "http://localhost:5000/api/v1/login/google";
     const newWindow = window.open(
       googleLoginUrl,
       "_target",
       "width=500,height=600"
-    );
+    )
+    if (newWindow) {
+      timer = setInterval(() => {
+        if(newWindow.closed){
+        console.log("yea we're authenticate");
+        fetchAuthUser()
+          if (timer) {
+              clearInterval(timer);
+          }
+        } 
+      }, 500);
+  }
   }
   return (
     <div className="relative flex min-h-screen items-center justify-center bg-[url('https://static.vecteezy.com/system/resources/thumbnails/004/243/021/small/abstract-template-background-white-and-bright-blue-squares-overlapping-with-halftone-and-texture-free-vector.jpg')] bg-no-repeat bg-cover bg-center ">
